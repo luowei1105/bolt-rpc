@@ -1,0 +1,1 @@
+random=com.fmgame.bolt.cluster.loadbalance.RandomLoadBalance

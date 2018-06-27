@@ -1,0 +1,2 @@
+failfast=com.fmgame.bolt.cluster.support.FailfastCluster
+failover=com.fmgame.bolt.cluster.support.FailoverCluster

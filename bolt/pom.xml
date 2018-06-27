@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.fmgame</groupId>
+		<artifactId>bolt-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>bolt</artifactId>
+	<packaging>jar</packaging>
+	<name>${project.artifactId}</name>
+	<description>The all in one project of bolt</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.fmgame</groupId>
+			<artifactId>bolt-core</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fmgame</groupId>
+			<artifactId>bolt-registry-zookeeper</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fmgame</groupId>
+			<artifactId>bolt-remoting-mina</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fmgame</groupId>
+			<artifactId>bolt-remoting-netty</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>fm-bolt-${project.version}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+						    <createSourcesJar>true</createSourcesJar>
+                            <promoteTransitiveDependencies>true</promoteTransitiveDependencies>
+							<artifactSet>
+								<includes>
+									<include>com.fmgame:bolt-core</include>
+									<include>com.fmgame:bolt-registry-zookeeper</include>
+									<include>com.fmgame:bolt-remoting-mina</include>
+									<include>com.fmgame:bolt-remoting-netty</include>
+								</includes>>
+							</artifactSet>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/services/com.fmgame.bolt.remoting.EndpointFactory</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/services/com.fmgame.bolt.registry.RegistryFactory</resource>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

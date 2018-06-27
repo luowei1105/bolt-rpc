@@ -1,0 +1,2 @@
+protostuff=com.fmgame.bolt.serialize.ProtostuffSerialization
+fastjson=com.fmgame.bolt.serialize.FastJSONSerialization

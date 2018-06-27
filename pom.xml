@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.fmgame</groupId>
+	<artifactId>bolt-parent</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>${project.artifactId}</name>
+	<description>A remote procedure call(RPC) framework for rapid development of high performance distributed services.</description>
+
+	<modules>
+		<module>bolt-core</module>
+		<module>bolt-remoting-mina</module>
+		<module>bolt-remoting-netty</module>
+		<module>bolt-registry-zookeeper</module>
+		<module>bolt-demo</module>
+		<module>bolt</module>
+		<module>bolt-test-benchmark</module>
+	</modules>
+
+	<properties>
+		<!-- apache commons libs -->
+		<lang3_version>3.1</lang3_version>
+		<!-- core libs -->
+		<dom4j_version>2.1.0</dom4j_version>
+		<fastjson_version>1.2.31</fastjson_version>
+		<protostuff_version>1.4.0</protostuff_version>
+		<mina_version>2.0.16</mina_version>
+		<netty_version>4.1.16.Final</netty_version>
+		<!-- Log libs -->
+		<slf4j_version>1.7.21</slf4j_version>
+		<log4j_version>1.2.17</log4j_version>
+		<!-- Test libs -->
+		<junit_version>4.12</junit_version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- apache commons libs -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${lang3_version}</version>
+			</dependency>
+			<!-- core libs -->
+			<dependency>
+			    <groupId>org.dom4j</groupId>
+			    <artifactId>dom4j</artifactId>
+			    <version>${dom4j_version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>jaxen</groupId>
+						<artifactId>jaxen</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.protostuff</groupId>
+				<artifactId>protostuff-api</artifactId>
+				<version>${protostuff_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.protostuff</groupId>
+				<artifactId>protostuff-collectionschema</artifactId>
+				<version>${protostuff_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.protostuff</groupId>
+				<artifactId>protostuff-core</artifactId>
+				<version>${protostuff_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.protostuff</groupId>
+				<artifactId>protostuff-runtime</artifactId>
+				<version>${protostuff_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.mina</groupId>
+				<artifactId>mina-core</artifactId>
+				<version>${mina_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>${netty_version}</version>
+			</dependency>
+			<!-- Log libs -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j_version}</version>
+			</dependency>
+			<!-- Test libs -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit_version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- Common libs -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.dom4j</groupId>
+		    <artifactId>dom4j</artifactId>
+		</dependency>
+		<!-- Log libs -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+		<!-- Test libs -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

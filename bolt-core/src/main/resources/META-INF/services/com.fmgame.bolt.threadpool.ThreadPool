@@ -1,0 +1,3 @@
+cached=com.fmgame.bolt.threadpool.impl.CachedThreadPool
+fixed=com.fmgame.bolt.threadpool.impl.FixedThreadPool
+limited=com.fmgame.bolt.threadpool.impl.LimitedThreadPool

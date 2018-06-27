@@ -1,0 +1,1 @@
+netty=com.fmgame.bolt.remoting.netty.NettyEndpointFactory

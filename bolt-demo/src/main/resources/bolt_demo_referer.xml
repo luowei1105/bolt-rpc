@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<consumer>
+	
+	<!-- 注册中心配置 使用不同注册中心需要依赖对应的jar包。-->
+    <registry name="local" address="127.0.0.1:0" />  
+    <!--  <registry name="zookeeper" address="127.0.0.1:2181" connectTimeout="2000" /> -->
+    
+    <!-- 协议配置 -->
+	<protocol id="demo1" name="default" port="18080" />
+	<!-- 集群协议配置 -->
+	<protocol id="demo2" name="default" clusterAddress="127.0.0.1:18080;127.0.0.1:18081;" />
+
+    <!-- 具体引用服务配置，声明实现的接口类。-->
+    <refer interface="com.fmgame.bolt.demo.IHello" protocol="demo1" />
+  
+</consumer>
