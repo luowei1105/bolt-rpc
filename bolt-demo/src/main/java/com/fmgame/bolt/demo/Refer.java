@@ -2,7 +2,11 @@ package com.fmgame.bolt.demo;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.stream.IntStream;
+
 import com.fmgame.bolt.config.impl.DefaultRefererHandler;
+import com.fmgame.bolt.remoting.ResponseFuture;
+import com.fmgame.bolt.remoting.impl.FutureListenerWrapper;
+import com.fmgame.bolt.rpc.RpcContext;
 
 /**
  * @author luowei
@@ -43,15 +47,16 @@ public class Refer {
 			e.printStackTrace();
 		}
 		
-//		RpcContext.getContext().asyncCall(hello::sayHelloAsync, new FutureListenerWrapper("player", 1) {
-//
-//			@Override
-//			public void operationComplete(ResponseFuture future) throws Exception {
-//				int ctx = this.getParams().getIntValue("player");
-//				System.out.println(future.get() + "-----" + ctx);
-//			}
-//			
-//		});
+		IHello hello = handler.get(IHello.class);
+		RpcContext.getContext().asyncCall(hello::sayHelloAsync, new FutureListenerWrapper("player", 1) {
+
+			@Override
+			public void operationComplete(ResponseFuture future) throws Exception {
+				int ctx = this.getParams().getIntValue("player");
+				System.out.println(future.get() + "-----" + ctx);
+			}
+			
+		});
 		
 //		while (true) {
 //			try {
