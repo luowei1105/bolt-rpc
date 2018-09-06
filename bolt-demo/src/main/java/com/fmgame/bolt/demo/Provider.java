@@ -11,7 +11,6 @@ public class Provider {
 	public static void main(String[] args) {
 		DefaultProviderHander handler = new DefaultProviderHander("bolt_demo_provider.xml");
 		handler.initialize();
-//		handler.release();
         // 阻止JVM退出
         synchronized (DefaultProviderHander.class) {
             while (true) {

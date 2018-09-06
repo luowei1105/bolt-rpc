@@ -6,8 +6,16 @@ package com.fmgame.bolt.demo;
  */
 public interface IHello {
 
+	/**
+	 * 同步调用
+	 * @return
+	 */
 	String sayHello();
 	
+	/**
+	 * 异步调用，所有异步调用方法名后面必须带上<p>Async</p>
+	 * @return
+	 */
 	String sayHelloAsync();
 	
 }

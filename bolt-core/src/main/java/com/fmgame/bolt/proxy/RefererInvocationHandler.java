@@ -57,15 +57,39 @@ public class RefererInvocationHandler<T> implements InvocationHandler {
 			response = invoker.invoke(request);
 			if (async && response instanceof ResponseFuture) {
 				RpcContext.getContext().setFuture((ResponseFuture) response);
-				return null;
+				return returnWrapperResult(method.getReturnType());
 			} else {
 			    RpcContext.getContext().setFuture(null);
 				return response.getResult();
 			}
 		} catch (Exception e) {
-		    RpcContext.getContext().setFuture(null);
-			return response.getResult();
+			if (async && response instanceof ResponseFuture) {
+				RpcContext.getContext().setFuture((ResponseFuture) response);
+				return returnWrapperResult(method.getReturnType());
+			} else {
+			    RpcContext.getContext().setFuture(null);
+				return response.getResult();
+			}
 		}
+	}
+	
+	private Object returnWrapperResult(Class<?> returnClass) {
+		if (returnClass.isPrimitive()) {
+			if (returnClass == byte.class || returnClass == short.class || returnClass == int.class) {
+				return 0;
+			} else if (returnClass == long.class) {
+				return 0L;
+			} else if (returnClass == float.class) {
+				return 0.0F;
+			} else if (returnClass == double.class) {
+				return 0.0D;
+			} else if (returnClass == char.class) {
+				return '\u0000';
+			} else if (returnClass == boolean.class) {
+				return false;
+			}
+		}
+		return null;
 	}
 
 }

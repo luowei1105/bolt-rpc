@@ -136,6 +136,21 @@ public abstract class AbstractProviderHandler {
 		// 编解码
 		String codec = protocolEle.attributeValue("codec");
 		config.setCodec(codec);
+	    // 请求超时时间(毫秒)
+		String requestTimeout = protocolEle.attributeValue("requestTimeout");
+		if (requestTimeout != null) {
+			config.setRequestTimeout(Integer.valueOf(requestTimeout));
+		}
+	    // 连接超时时间(毫秒)
+		String connectTimeout = protocolEle.attributeValue("connectTimeout");
+		if (connectTimeout != null) {
+			config.setConnectTimeout(Integer.valueOf(connectTimeout));
+		}
+	    // 是否重连
+		String reconnect = protocolEle.attributeValue("reconnect");
+		if (reconnect != null) {
+			config.setReconnect(Boolean.valueOf(reconnect));
+		}
 		// io线程数
 		String ioThreads = protocolEle.attributeValue("ioThreads");
 		if (ioThreads != null) {
