@@ -12,8 +12,8 @@
 1. Add dependencies to pom.<br>
 ```java
   <dependency>
-      <groupId>com.weibo</groupId>
-      <artifactId>motan-core</artifactId>
+      <groupId>com.fmgame</groupId>
+      <artifactId>bolt</artifactId>
       <version>1.0.0</version>
   </dependency>
 ```
